@@ -16,5 +16,6 @@ public class MenuInfo {
     private String orderNo;
     private String menuState;
     private String menuAliasName;
+    private String reference;
     private ArrayList<MenuInfo> nodes;
 }

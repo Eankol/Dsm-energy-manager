@@ -8,7 +8,8 @@ import java.util.ArrayList;
 @Mapper
 public interface MenuDao {
 
-    @Select("select MENU_ID,PARENT_MENU_ID,MENU_LEVEL,MENU_NAME,ORDER_NO,MENU_STATE,MENU_ALIAS_NAME from dsm_web_menuinfo WHERE PARENT_MENU_ID=#{parentId} and MENU_STATE=1 and IS_VALID=1")
+    @Select("select MENU_ID,PARENT_MENU_ID,MENU_LEVEL,MENU_NAME,ORDER_NO,MENU_STATE,MENU_ALIAS_NAME,REFERENCE " +
+            "from dsm_web_menuinfo WHERE PARENT_MENU_ID=#{parentId} and MENU_STATE=1 and IS_VALID=1")
     @Results({
             @Result(column = "MENU_ID",property="menuId"),
             @Result(column = "PARENT_MENU_ID",property="parentMenuId"),
@@ -16,7 +17,8 @@ public interface MenuDao {
             @Result(column = "MENU_NAME",property="menuName"),
             @Result(column = "ORDER_NO",property="orderNo"),
             @Result(column = "MENU_STATE",property="menuState"),
-            @Result(column = "MENU_ALIAS_NAME",property="menuAliasName")
+            @Result(column = "MENU_ALIAS_NAME",property="menuAliasName"),
+            @Result(column = "REFERENCE",property = "reference")
     })
     public ArrayList<MenuInfo> getMenus(@Param("parentId")String parentId);
 
