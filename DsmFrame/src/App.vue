@@ -1,95 +1,4 @@
-<style lang="scss">
-    .layout{
-
-        background: #f5f7f9;
-        position: relative;
-        overflow: hidden;
-    }
-    .layout-logo{
-    width: 130px;
-    background-color: #ffffff;
-    height: 40px;
-    float: left;
-    position: relative;
-    top: 10px;
-    left: 15px;
-    border-radius: 5px 5px;
-}
-.layout-nav{
-    color: #ffffff;
-    .ivu-menu-item{
-        float: right;
-        margin-right: 10px;
-        color: #ffffff;
-    }
-}
-    .layout-header-bar{
-        background: #ffffff;
-        box-shadow: 0 1px 1px rgba(0,0,0,.1);
-    }
-    .layout-logo-left{
-        width: 90%;
-        height: 30px;
-        background: #5b6270;
-        border-radius: 3px;
-        margin: 15px auto;
-    }
-    .menu-icon{
-        transition: all .3s;
-    }
-    .rotate-icon{
-        transform: rotate(-90deg);
-    }
-    .isHide{
-        position: relative;
-        background-color: #ffffff;
-        border-radius: 0px 10px 10px 0px;
-        float: right;
-        top:10px;
-        z-index: 999;
-        right: -19px;
-        box-shadow: 3px 3px 5px #444444;
-    }
-    .selecter{
-        position: relative;
-        float: right;
-    }
-    .menu-item{
-        span{
-        display: inline-block;
-        overflow: hidden;
-        width:100px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        vertical-align: bottom;
-        transition: width .2s ease .2s;
-        };
-        i{
-        transform: translateX(0px);
-        transition: font-size .2s ease, transform .2s ease;
-        vertical-align: middle;
-        font-size: 16px;
-        }
-    }
-    .collapsed-menu{
-        span{
-        width: 0px;
-        display: none;
-        transition: width .2s ease;
-        };
-        i{
-        transform: translateX(5px);
-        transition: font-size .2s ease .2s, transform .2s ease .2s;
-        vertical-align: middle;
-        font-size: 22px;
-    }
-    }
-    .ivu-input-prefix{
-        .ivu-icon{
-            margin-left: -60px;
-        }
-    }
-</style>
+<style src="./components/css/app/app.scss" lang="scss"></style>
 <template>
     <div class="layout">
         <Layout>
@@ -100,7 +9,6 @@
                     </div>
                     <div style="position:relative;float:left;margin-left:20px"><h3>上海协同</h3></div>
                     <div class="layout-nav" :style="{color:'#ffffff'}">
-                        
                         <MenuItem name="2">
                             <Icon type="ios-keypad"></Icon>
                             Config
@@ -123,7 +31,18 @@
                    <div style="padding:0px 10px 20px 10px">
                        <Input prefix="ios-search" placeholder="搜索……" style="width:100%;margin-left:0px" />
                     </div>
-                    <MenuItem name="1-2">
+                    <div style="position:relative;height:100%;overflow:auto">
+                    <Submenu v-for="menu in menusData.menus" :name="menu.menuId">
+                        <template slot="title">
+                            <span>{{menu.menuName}}</span>
+                        </template>
+                        <MenuItem v-for="option in menu.nodes" :name="option.menuId">
+                            <span>{{option.menuName}}</span>
+                        </MenuItem>
+           
+                    </Submenu>
+                    </div>
+                    <!--<MenuItem name="1-2">
                         <Icon type="ios-navigate"></Icon>
                         <span>电能分析</span>
                     </MenuItem>
@@ -134,7 +53,7 @@
                     <MenuItem name="1-4">
                         <Icon type="ios-settings"></Icon>
                         <span>用电安全分析</span>
-                    </MenuItem>
+                    </MenuItem>-->
                 </Menu>
             </Sider>
                 
@@ -159,35 +78,4 @@
         </Layout>
     </div>
 </template>
-<script>
-    export default {
-        data () {
-            return {
-                isCollapsed: false,
-                viewHeight:(window.innerHeight-150)+"px"
-            }
-        },
-        mounted(){
-         
-        },
-        computed: {
-            rotateIcon () {
-                return [
-                    'menu-icon',
-                    this.isCollapsed ? 'rotate-icon' : ''
-                ];
-            },
-            menuitemClasses () {
-                return [
-                    'menu-item',
-                    this.isCollapsed ? 'collapsed-menu' : ''
-                ]
-            }
-        },
-        methods: {
-            collapsedSider () {
-                this.$refs.side1.toggleCollapse();
-            }
-        }
-    }
-</script>
+<script src="./components/js/app/app.js"></script>

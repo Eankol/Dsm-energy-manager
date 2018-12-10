@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by misty on 2018/7/23.
- */
+
 @Slf4j
 public class CrossDomainFilter implements Filter {
 

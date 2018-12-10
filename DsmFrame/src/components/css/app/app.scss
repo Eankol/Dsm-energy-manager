@@ -1,0 +1,97 @@
+.layout{
+
+    background: #f5f7f9;
+    position: relative;
+    overflow: hidden;
+}
+.layout-logo{
+width: 130px;
+background-color: #ffffff;
+height: 40px;
+float: left;
+position: relative;
+top: 10px;
+left: 15px;
+border-radius: 5px 5px;
+}
+.layout-nav{
+color: #ffffff;
+.ivu-menu-item{
+    float: right;
+    margin-right: 10px;
+    color: #ffffff;
+}
+}
+.layout-header-bar{
+    background: #ffffff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+.layout-logo-left{
+    width: 90%;
+    height: 30px;
+    background: #5b6270;
+    border-radius: 3px;
+    margin: 15px auto;
+}
+.menu-icon{
+    transition: all .3s;
+}
+.rotate-icon{
+    transform: rotate(-90deg);
+}
+.isHide{
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 10px 10px 10px 10px;
+    float: right;
+    top:60px;
+    z-index: 999;
+    right: -11px;
+    //border: 1px solid #5b6270;
+    box-shadow: 5px 2px 5px #444444;
+}
+.selecter{
+    position: relative;
+    float: right;
+}
+.menu-item{
+    position: absolute;
+    height: 100%;
+    padding-top: 20px;
+    span{
+    display: inline-block;
+    overflow: visible;
+    width:100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: width .2s ease .2s;
+    };
+    i{
+    transform: translateX(0px);
+    transition: font-size .2s ease, transform .2s ease;
+    vertical-align: middle;
+    font-size: 16px;
+    }
+}
+.collapsed-menu{
+    span{
+    width: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: width .2s ease;
+    };
+    i{
+    transform: translateX(5px);
+    display: none;
+    transition: font-size .2s ease .2s, transform .2s ease .2s;
+    vertical-align: middle;
+    font-size: 22px;
+}
+}
+.ivu-input-prefix{
+    .ivu-icon{
+        margin-left: -60px;
+    }
+}

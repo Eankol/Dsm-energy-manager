@@ -1,30 +1,13 @@
 # dsmframe
 
-> a frame
+> a frame for manage sys;
+> created by Ean on 2018/12/05;
 
-## Build Setup
+### build 
+1. use sass instead css;
+2. one page serv , less http req. ;
+3. mvc frame;
+4. iView build;
+5. iView loader mode;
 
-``` bash
-# install dependencies
-npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
