@@ -37,7 +37,7 @@
                         <template slot="title">
                             <span>{{menu.menuName}}</span>
                         </template>
-                        <MenuItem v-for="option in menu.nodes" :name="option.menuId" :key="option.menuId" :to="option.reference">
+                        <MenuItem v-for="option in menu.nodes" :name="option.menuId" :key="option.menuId" :to="option.menuId=='11'?'/':option.reference">
                             <span>{{option.menuName}}</span>
                         </MenuItem>
                     </Submenu>
@@ -64,7 +64,7 @@
         </MenuItem>
     </Menu></div>
     <keep-alive>
-                    <router-view :style="{background: '#fff', minHeight: '100px',height:viewHeight,overflow:'auto'}"/>
+    <router-view :style="{background: '#fff', minHeight: '100px',height:viewHeight,overflow:'auto'}"/>
     </keep-alive>
                 </Content>
             </Layout>
