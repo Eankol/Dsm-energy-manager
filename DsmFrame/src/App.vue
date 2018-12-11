@@ -37,7 +37,7 @@
                         <template slot="title">
                             <span>{{menu.menuName}}</span>
                         </template>
-                        <MenuItem v-for="option in menu.nodes" :name="option.menuId" :key="option.menuId">
+                        <MenuItem v-for="option in menu.nodes" :name="option.menuId" :key="option.menuId" :to="option.reference">
                             <span>{{option.menuName}}</span>
                         </MenuItem>
                     </Submenu>
@@ -63,7 +63,9 @@
             {{tmp.menuName}} <Icon type="md-close-circle" @click="delActive(tmp.menuId)" />
         </MenuItem>
     </Menu></div>
+    <keep-alive>
                     <router-view :style="{background: '#fff', minHeight: '100px',height:viewHeight,overflow:'auto'}"/>
+    </keep-alive>
                 </Content>
             </Layout>
         </Layout>
