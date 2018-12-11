@@ -23,7 +23,7 @@ public class CrossDomainFilter implements Filter {
         response.setHeader("Access-Control-Allow-Origin", "*");
 //        response.setHeader("Access-Control-Allow-Methods", "*");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST,DELETE");
-        log.info("---filter--");
+       // log.info("---filter--");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type,XFILENAME,XFILECATEGORY,XFILESIZE");
         filterChain.doFilter(request, response);
     }

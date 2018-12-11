@@ -44,11 +44,12 @@ color: #ffffff;
     background-color: #ffffff;
     border-radius: 10px 10px 10px 10px;
     float: right;
-    top:60px;
+    top:45px;
     z-index: 999;
-    right: -11px;
+    right: -10px;
     //border: 1px solid #5b6270;
-    box-shadow: 5px 2px 5px #444444;
+    box-shadow: 5px 2px 4px #444444;
+    cursor: pointer;
 }
 .selecter{
     position: relative;
@@ -67,6 +68,9 @@ color: #ffffff;
     vertical-align: bottom;
     transition: width .2s ease .2s;
     };
+    div{
+        display: block;
+    }
     i{
     transform: translateX(0px);
     transition: font-size .2s ease, transform .2s ease;
@@ -74,22 +78,38 @@ color: #ffffff;
     font-size: 16px;
     }
 }
+.closeBtn{
+    overflow: visible;
+    i{
+        float: right;
+        font-size: 18px;
+        margin-top: 10px;
+        position: relative;
+        right:-5px
+    }
+}
+
 .collapsed-menu{
     span{
-    width: 30px;
+    width: 0px;
     overflow: hidden;
+    display: none;
     white-space: nowrap;
     text-overflow: ellipsis;
     transition: width .2s ease;
     };
+    div{
+        display: none;
+    }
     i{
     transform: translateX(5px);
     display: none;
     transition: font-size .2s ease .2s, transform .2s ease .2s;
     vertical-align: middle;
-    font-size: 22px;
+    font-size: 0px;
 }
 }
+
 .ivu-input-prefix{
     .ivu-icon{
         margin-left: -60px;

@@ -9,6 +9,10 @@
                     </div>
                     <div style="position:relative;float:left;margin-left:20px"><h3>上海协同</h3></div>
                     <div class="layout-nav" :style="{color:'#ffffff'}">
+                        <MenuItem name="4">
+                            <Icon type="ios-paper"></Icon>
+                            User
+                        </MenuItem>
                         <MenuItem name="2">
                             <Icon type="ios-keypad"></Icon>
                             Config
@@ -17,29 +21,25 @@
                             <Icon type="ios-analytics"></Icon>
                             About
                         </MenuItem>
-                        <MenuItem name="4">
-                            <Icon type="ios-paper"></Icon>
-                            User
-                        </MenuItem>
+                        
                     </div>
                 </Menu>
             </Header>
             <Layout>
-              <Sider ref="side1" hide-trigger collapsible :collapsed-width="75" v-model="isCollapsed" :style="{padding:'0px',margin:'0px',background:'#ffffff','box-shadow':'3px 3px 10px #333333',overflow:'visible'}">
+              <Sider ref="side1" hide-trigger collapsible :collapsed-width="1" v-model="isCollapsed" :style="{padding:'0px',margin:'0px',background:'#ffffff','box-shadow':'3px 3px 10px #333333',overflow:'visible'}">
                <div class="isHide"> <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0px'}" type="md-menu" size="20"></Icon></div>
-                <Menu active-name="1-2" width="auto" :class="menuitemClasses">
+                <Menu active-name="1-2" width="auto" :class="menuitemClasses" @on-select="onSelect">
                    <div style="padding:0px 10px 20px 10px">
                        <Input prefix="ios-search" placeholder="搜索……" style="width:100%;margin-left:0px" />
                     </div>
                     <div style="position:relative;height:100%;overflow:auto">
-                    <Submenu v-for="menu in menusData.menus" :name="menu.menuId">
+                    <Submenu v-for="menu in menusData.menus" :name="menu.menuId" :key="menu.menuId" >
                         <template slot="title">
                             <span>{{menu.menuName}}</span>
                         </template>
-                        <MenuItem v-for="option in menu.nodes" :name="option.menuId">
+                        <MenuItem v-for="option in menu.nodes" :name="option.menuId" :key="option.menuId">
                             <span>{{option.menuName}}</span>
                         </MenuItem>
-           
                     </Submenu>
                     </div>
                     <!--<MenuItem name="1-2">
@@ -58,20 +58,11 @@
             </Sider>
                 
                 <Content :style="{margin: '20px 20px 20px 20px',height:'100%','box-shadow':'1px 1px 5px #333333','border-radius':'20px 20px 0px 0px'}">
-                    <Menu mode="horizontal" active-name="1" style="height:50px;padding:0px;margin:0px">
-        <MenuItem name="1">
-            <Icon type="ios-paper" />
-            内容管理
+                 <div style="overflow:hidden">   <Menu mode="horizontal" style="height:50px;padding:0px;margin:0px;" :active-name="activeBtn">
+        <MenuItem v-for="tmp in activeMenu" :name="tmp.menuId" :key="tmp.menuId" class="closeBtn">
+            {{tmp.menuName}} <Icon type="md-close-circle" @click="delActive(tmp.menuId)" />
         </MenuItem>
-        <MenuItem name="2">
-            <Icon type="ios-people" />
-            用户管理
-        </MenuItem>
-        <MenuItem name="4">
-            <Icon type="ios-construct" />
-            综合设置
-        </MenuItem>
-    </Menu>
+    </Menu></div>
                     <router-view :style="{background: '#fff', minHeight: '100px',height:viewHeight,overflow:'auto'}"/>
                 </Content>
             </Layout>

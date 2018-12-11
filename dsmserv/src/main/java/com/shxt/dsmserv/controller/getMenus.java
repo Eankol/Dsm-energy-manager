@@ -24,7 +24,7 @@ public class getMenus {
 
     @GetMapping("/getMenus")
     public Map<String,ArrayList> getMenus(String parentId){
-        System.out.println(parentId);
+       // System.out.println(parentId);
         Map<String,ArrayList> map=new HashMap<String, ArrayList>();
         map.put("menus",menuService.getMenuInfos(parentId));
         return map;
