@@ -5,8 +5,19 @@ export default {
             isCollapsed: false,
             viewHeight:(window.innerHeight-150)+"px",
             menusData:{},
-            activeMenu:[],
-            activeBtn:''
+            activeMenu:[{
+                menuId:"11",
+                parentMenuId:"1",
+                menuLevel:"1",
+                menuName:"用电概况",
+                orderNo:"1",
+                menuState:"1",
+                menuAliasName:"用电概况",
+                reference:"/kode/basic/basic.html",
+                nodes:[]}
+            ],
+            activeBtn:'',
+            lastActive:''
         }
     },
     mounted(){
@@ -42,20 +53,26 @@ export default {
                 var t=this.menusData.menus[i].nodes
                 for (var j=0;j<t.length;j++){
                     if(t[j].menuId==data){
-                        if(this.activeMenu.indexOf(t[j])==-1){
-                           this.activeMenu.push(t[j]) 
-                        }                       
+                        let ispush=true;
+                        for(let n=0;n<this.activeMenu.length;n++){
+                            if(this.activeMenu[n].menuId==data){
+                                ispush=false;
+                            }
+                        }
+                        if(ispush){
+                            this.activeMenu.push(t[j])
+                        }                     
                     }
                 }
             }
+            this.lastActive=this.activeBtn;
             this.activeBtn=data;
         },
         delActive(data){
-            console.log(data)
-            //TODO
             for(var i=0;i<this.activeMenu.length;i++){
                 if (this.activeMenu[i].menuId==data) {
-                    this.activeMenu.splice(this.activeMenu.indexOf(this.activeMenu[i]),1)
+                    this.activeMenu.splice(i,1);
+                    this.$router.go(-1);                     
                 }
             }
         }

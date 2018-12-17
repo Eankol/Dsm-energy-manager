@@ -37,7 +37,7 @@
                         <template slot="title">
                             <span>{{menu.menuName}}</span>
                         </template>
-                        <MenuItem v-for="option in menu.nodes" :name="option.menuId" :key="option.menuId" :to="option.menuId=='11'?'/':option.reference">
+                        <MenuItem v-for="option in menu.nodes" :name="option.menuId" :key="option.menuId" :to="option.reference">
                             <span>{{option.menuName}}</span>
                         </MenuItem>
                     </Submenu>
@@ -59,8 +59,8 @@
                 
                 <Content :style="{margin: '20px 20px 20px 20px',height:'100%','box-shadow':'1px 1px 5px #333333','border-radius':'20px 20px 0px 0px'}">
                  <div style="overflow:hidden">   <Menu mode="horizontal" style="height:50px;padding:0px;margin:0px;" :active-name="activeBtn">
-        <MenuItem v-for="tmp in activeMenu" :name="tmp.menuId" :key="tmp.menuId" class="closeBtn">
-            {{tmp.menuName}} <Icon type="md-close-circle" @click="delActive(tmp.menuId)" />
+        <MenuItem v-for="tmp in activeMenu" :name="tmp.menuId" :key="tmp.menuId" :to="tmp.reference" class="closeBtn" @on-select="onSelect">
+            {{tmp.menuName}} <Icon v-if="activeMenu.length>1" type="md-close-circle" @click="delActive(tmp.menuId)" />
         </MenuItem>
     </Menu></div>
     <keep-alive>

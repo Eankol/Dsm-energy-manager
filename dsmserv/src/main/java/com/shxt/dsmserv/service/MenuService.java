@@ -12,8 +12,6 @@ public class MenuService {
     @Autowired
     MenuDao menuDao;
 
-
-
     public ArrayList<MenuInfo> getMenus(ArrayList arrayList){
         if (arrayList.size()!=0){
             for (int i=0;i<arrayList.size();i++){
