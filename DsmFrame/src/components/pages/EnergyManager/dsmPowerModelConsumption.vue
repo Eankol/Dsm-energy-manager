@@ -2,7 +2,7 @@
     <div>
        <Row style="height:100%">
            <Col :span="5" :style="{height:'100%',overflow:'auto'}">
-           <Tree ref="tree" :data="devs" @on-select-change="selectDev" :multiple="true"></Tree>
+           <Tree ref="tree" :data="devs" @on-select-change="selectDev"></Tree>
            </Col>
            <Col :span="19" :style="{height:'100%',overflow:'auto',background:'#fffeff'}">
            <Layout>
@@ -19,7 +19,7 @@
                    <Button type="success"><Icon type="ios-cloud-download-outline" />导出</Button>
                 </Content>
                 <Content class="content">
-                    <div :id="id" class="eboxHide">
+                    <div id="main" class="eboxHide">
                     </div>
                 </Content>
            </Layout>
@@ -28,7 +28,7 @@
        </Row>
     </div>
 </template>
-<script src="./../../js/EnergyManager/dsmEnergyUse.js"></script>
+<script src="./../../js/EnergyManager/dsmPowerModelConsumption.js"></script>
 <style lang="scss" scoped>
 .content{
     background-color: #ffffff;

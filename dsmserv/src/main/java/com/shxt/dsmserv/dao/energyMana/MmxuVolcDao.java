@@ -2,13 +2,12 @@ package com.shxt.dsmserv.dao.energyMana;
 
 import com.shxt.dsmserv.entity.energyMana.mmxuVolInfo;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 
-import java.sql.ResultSet;
+import java.util.ArrayList;
 
 @Mapper
 public interface MmxuVolcDao {
-    @Select({"select * from c_mmxu_vol_c where LD_ID=#{ldId} and DATA_TYPE=00100112 and DATA_DATE=#{queryDate}"})
-    public mmxuVolInfo getMmxuVol(@Param("ldId")String ldId, @Param("queryDate")String queryDate);
+    @SelectProvider(type = MmxuVolcDaoProvider.class,method = "sql")
+    public ArrayList<mmxuVolInfo> getMmxuVol(String ldId, String queryDate);
 }

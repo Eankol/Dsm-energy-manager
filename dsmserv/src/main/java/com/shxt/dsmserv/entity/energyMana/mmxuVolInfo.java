@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class mmxuVolInfo {
+    private String dsmLdName;
     private String sysId;
     private String ldId;
     private String dataDate;

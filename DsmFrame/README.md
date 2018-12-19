@@ -5,9 +5,16 @@
 
 ### build 
 1. use sass instead css;
-2. one page serv , less http req. ;
-3. mvc frame;
+2. had second tip here;
+3. mvvm frame;
 4. iView build;
 5. iView loader mode;
+6. echarts;
+7. sweetAlert;
+
+### attention
+> DO NOT TRY TO USE ESLINT IN THIS PROJECT,
+> BUT U STILL NEED MORE REGULAR CODE,
+> WITH ES6.
 
 

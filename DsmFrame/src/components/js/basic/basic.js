@@ -1,5 +1,5 @@
 let echarts = require('echarts/lib/echarts');
-require('echarts/lib/chart/bar');
+require('echarts/lib/chart/bar');//条形统计图
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/toolbox');
 require('echarts/lib/component/legend');
