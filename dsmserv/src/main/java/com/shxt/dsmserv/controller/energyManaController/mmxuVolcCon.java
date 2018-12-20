@@ -21,4 +21,9 @@ public class mmxuVolcCon {
     public Map getMstaVal(String startDate,String endDate,String ldId){
         return  msv.getMstaVol(startDate, endDate, ldId);
     }
+
+    @GetMapping("/getAllVol")
+    public Map getAllVal(String startDate,String endDate,String ldId){
+        return  msv.getMstaVols(startDate, endDate, ldId);
+    }
 }

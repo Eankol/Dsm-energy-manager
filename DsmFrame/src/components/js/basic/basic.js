@@ -8,8 +8,8 @@ require('echarts/lib/component/markLine');
 export default {
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App',
-        edatas:[]
+        edatas:[],
+        btn:''
       }
     },
     mounted () {

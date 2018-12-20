@@ -71,4 +71,4 @@
         </Layout>
     </div>
 </template>
-<script src="./components/js/app/app.js"></script>
+<script src="./components/js/app/app.js" scoped></script>

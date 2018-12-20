@@ -8,19 +8,22 @@
            <Layout>
                <Content class="content">
                    选择日期：
-                   <DatePicker ref="datePicker" value="yyyy-MM-dd" @on-change="getDate" type="date" placeholder="选择日期" style="width: 120px"></DatePicker>
-                    <Select v-model="selectType" style="width:100px">
-                        <Option value="1">电量</Option>
-                        <Option value="2">电压</Option>
-                        <Option value="3">电流</Option>
-                    </Select>&emsp;
+                   <DatePicker @on-change="getDate" :value="value2" format="yyyy-MM-dd" type="daterange" placement="bottom-start" placeholder="选择日期段" style="width: 200px"></DatePicker>
+                   &emsp;
                    <Button type="primary" @click="toQuery()"><Icon type="ios-search"/>查询</Button>
                    </Select>&emsp;
                    <Button type="success"><Icon type="ios-cloud-download-outline" />导出</Button>
                 </Content>
                 <Content class="content">
-                    <div id="main" class="eboxHide">
+                    <div id="main" class="eboxHide ebox">
                     </div>
+                </Content>
+                <Content class="content">
+                    <div id="main2" class="eboxHide ebox">
+                    </div>
+                </Content>
+                <Content class="content">
+                    <Table :columns="columns1" :data="tableData"></Table>
                 </Content>
            </Layout>
            </Col>

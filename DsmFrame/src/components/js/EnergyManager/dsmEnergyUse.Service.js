@@ -11,6 +11,14 @@ class dsmEnergyUseService{
     getVol(queryDate,ldId){
         return api.get(baseURL+'/getVol?ldId='+ldId+'&queryDate='+queryDate);
     }
+
+    getMstaVol(startDate,endDate,ldId){
+        return api.get(baseURL+'/getMstaVol?startDate='+startDate+'&endDate='+endDate+'&ldId='+ldId);
+    }
+
+    getAllVol(startDate,endDate,ldId){
+        return api.get(baseURL+'/getAllVol?startDate='+startDate+'&endDate='+endDate+'&ldId='+ldId);
+    }
 }
 
 export default new dsmEnergyUseService();

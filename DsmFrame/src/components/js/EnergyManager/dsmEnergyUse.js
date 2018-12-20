@@ -1,10 +1,4 @@
 import dsmEnergyUseServ from "@/components/js/EnergyManager/dsmEnergyUse.Service"
-let echarts = require('echarts/lib/echarts');
-require('echarts/lib/chart/line');//曲线
-require('echarts/lib/component/tooltip');
-require('echarts/lib/component/toolbox');
-require('echarts/lib/component/legend');
-require('echarts/lib/component/markLine');
 
 export default{
     data(){
@@ -25,7 +19,7 @@ export default{
     },
     methods: {
         echartIn(x,y){
-            var omyChart = echarts.init(document.getElementById('main'));
+            var omyChart = this.$echarts.init(document.getElementById('main'));
             var option = {
                 title: {
                     text: ''

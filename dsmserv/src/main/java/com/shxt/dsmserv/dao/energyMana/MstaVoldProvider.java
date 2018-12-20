@@ -7,4 +7,5 @@ public class MstaVoldProvider {
                 "from dsm_msta_vol_d where DATA_DATE BETWEEN '"+startDate+"' " +
                 "and '"+endDate+"' and DSM_LD_ID="+ldId+" and DATA_TYPE=00100111 )b on b.DSM_LD_ID=a.DSM_LD_ID";
     }
+
 }

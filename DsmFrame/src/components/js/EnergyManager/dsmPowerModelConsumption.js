@@ -1,10 +1,4 @@
 import dsmEnergyUseServ from "@/components/js/EnergyManager/dsmEnergyUse.Service"
-let echarts = require('echarts/lib/echarts');
-require('echarts/lib/chart/line');//曲线
-require('echarts/lib/component/tooltip');
-require('echarts/lib/component/toolbox');
-require('echarts/lib/component/legend');
-require('echarts/lib/component/markLine');
 
 export default{
     data(){
@@ -13,8 +7,26 @@ export default{
             selectDate:'',
             selectType:'',
             resdata:[],
+            value2:['yyyy-MM-dd', 'yyyy-MM-dd'],
             selectLdId:'',
-            isRelative:false //是否为相对坐标，只有line需要引用
+            startDate:'',
+            endDate:'',
+            e2Data:[],
+            tableData:[],
+            isRelative:false, //是否为相对坐标，只有line需要引用
+            columns1: [{
+                    title: '设备名称',
+                    key: 'dsmLdName'
+                },{
+                    title: '设备编号',
+                    key: 'dsmLdId'
+                },{
+                    title: '日期',
+                    key: 'date'
+                },{
+                    title:'电压',
+                    key:'maxVol',
+                }]
         }    
     },
     mounted () {
@@ -23,35 +35,26 @@ export default{
         }).catch(err=>{}).finally(()=>{});
     },
     methods: {
-        echartIn(x,y){
-            var myChart = echarts.init(document.getElementById('main'));
+        echartIn(data){
+            var myChart = this.$echarts.init(document.getElementById('main'));
             var option = {
                 title: {
-                    text: ''
+                    text: '统计',
+                    x:'center'
                 },
                 tooltip: {
-                    trigger: 'axis'
+                    show:true
                 },
-                legend: {
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
+                legend:function(){
+                        let t=[]
+                        for(let i = 0;i<data.length;i++){
+                            t.push(data[i].date)
+                        }
+                        return {orient: 'vertical',x: 'left',type: 'scroll',data:t};
+                    }(),
                 toolbox: { //工具箱
                     show: true,
                     feature: {
-                        myRelative:{
-                            show:true,
-                            title:this.isRelative?'绝对坐标':'相对坐标',
-                           icon:'path:M0.000 214.000 L 0.000 400.000 200.000 400.000 L 400.000 400.000 400.000 354.000 L 400.000 308.000 386.480 308.000 C 376.498 308.000,372.834 308.126,372.480 308.480 C 372.129 308.831,372.000 312.053,372.000 320.480 L 372.000 332.000 320.000 332.000 L 268.000 332.000 268.000 320.480 C 268.000 312.053,267.871 308.831,267.520 308.480 C 266.831 307.791,237.169 307.791,236.480 308.480 C 236.129 308.831,236.000 312.053,236.000 320.480 L 236.000 332.000 152.000 332.000 L 68.000 332.000 68.000 308.000 L 68.000 284.000 99.520 284.000 C 123.502 284.000,131.155 283.885,131.520 283.520 C 132.211 282.829,132.211 245.171,131.520 244.480 C 131.155 244.115,123.502 244.000,99.520 244.000 L 68.000 244.000 68.000 220.000 L 68.000 196.000 107.520 196.000 C 137.724 196.000,147.153 195.887,147.520 195.520 C 148.213 194.827,148.213 149.173,147.520 148.480 C 147.153 148.113,137.724 148.000,107.520 148.000 L 68.000 148.000 68.000 116.000 L 68.000 84.000 111.520 84.000 C 144.836 84.000,155.153 83.887,155.520 83.520 C 156.214 82.826,156.214 29.174,155.520 28.480 C 155.150 28.110,137.280 28.000,77.520 28.000 L 0.000 28.000 0.000 214.000',
-                           onclick:()=> {//事件触发，记得用箭头函数，不要function，因为function中不能回调，vue需要this指向method的方法
-                              this.isRelative=!this.isRelative;
-                              this.echartIn(x,y);
-                                }  
-                        },
                         dataZoom: { //框选区域缩放
                             yAxisIndex: 'none'
                         },
@@ -62,69 +65,160 @@ export default{
                         saveAsImage: {} //保存图片
                     }
                 },
-                xAxis: [{
-                    axisLabel: {
-                        rotate: 30,
-                        interval: 11
-                    },
-        
-                    type: 'category',
-                    boundaryGap: false,
-                    data: x
-                }],
-                yAxis: [{
-                    type: 'value',
-                    scale:this.isRelative
-                }],
-        
-                series:{
-                    name : "电压",
-                    type : 'line',
-                    symbol : 'none',
-                    smooth : 0.2,
-                    data : y             
-                }
+                series:function(){
+                    let t=[]
+                    let a={};
+                    a.name="电压";
+                    a.type= 'pie';
+                    a.center= ['40%', '50%'];
+            
+                    a.data=[];
+                        for(let i = 0;i<data.length;i++){
+                            let ts={};
+                            ts.value= data[i].maxVol;
+                            ts.name= data[i].date;
+                            
+                            
+                            a.data.push(ts)
+                        }
+                        t.push(a)
+                    return t;
+                }()
                 
             };
-            myChart.setOption(option);
+            myChart.setOption(option,true);
+        },
+        echartIn2(data){
+            var myChart = this.$echarts.init(document.getElementById('main2'));
+            var option = {
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    show:true
+                },
+                legend:function(){
+                        let t=[]
+                        for(let i = 0;i<data.length;i++){
+                            if(data[i].length>0){
+                                t.push(data[i][0].dsmLdName)
+                            }
+                        }
+                        return {data:t};
+                    }(),
+                toolbox: { //工具箱
+                    show: true,
+                    feature: {
+                        dataZoom: { //框选区域缩放
+                            yAxisIndex: 'none'
+                        },
+                        magicType: {
+                            type: ['line', 'bar']
+                        }, //动态类型切换
+                        restore: {}, //复位原始图表
+                        saveAsImage: {} //保存图片
+                    }
+                },
+                yAxis:  {
+                    type: 'value'
+                },
+                xAxis: {
+                    type: 'category',
+                    data: function(){
+                        let t=[]
+                        for(let i = 0;i<data.length;i++){
+                            if(data[i].length>0){
+                                for(let j=0;j<data[i].length;j++){
+                                    if(t.indexOf(data[i][j].date)==-1){
+                                        t.push(data[i][j].date)
+                                    }
+                                }
+                            }
+                        }
+                        return t;
+                    }()
+                },
+                series:function(){
+                    let res=[];
+                    let t=[]
+                    for(let i = 0;i<data.length;i++){
+                        if(data[i].length>0){
+                            for(let j=0;j<data[i].length;j++){
+                                if(t.indexOf(data[i][j].date)==-1){
+                                    t.push(data[i][j].date)
+                                }
+                            }
+                        }
+                    }
+                        for(let j=0;j<data.length;j++){
+                            if(data[j].length>0){
+                                let ts={};
+                                ts.name=data[j][0].dsmLdName;
+                                ts.type='bar';
+                                ts.stack= '总电压';
+                                ts.label= {
+                                    normal: {
+                                        show: true
+                                    }
+                                };
+                                ts.data=t;
+                                for(let p=0;p<data[j].length;p++){
+                                    let c=data[j][p];
+                                    ts.data[t.indexOf(c.date)]=c.maxVol;
+                                }
+
+                                
+                                res.push(ts)
+                            }
+                        
+                    }
+                    return res;
+                }()
+            };
+            myChart.setOption(option,true);
         },
         selectDev(data){
             this.selectLdId=data[0].dsmLdId;
         },
         toQuery(){
-            if(this.selectDate==''){
+            if(this.startDate==''){
                 swal("请选择日期");
                 return false;
             }
-            if(this.selectType==''){
-                swal("请选择查询类型");
+            if(this.endDate==''){
+                swal("请选择日期");
                 return false;
             }
             if(this.selectLdId==''){
                 swal("请选择设备");
                 return false;
             }
-            dsmEnergyUseServ.getVol(this.selectDate,this.selectLdId).then(res=>{
-                console.log(res.data)
+            dsmEnergyUseServ.getMstaVol(this.startDate,this.endDate,this.selectLdId).then(res=>{
                 this.resdata=[];
-                for(let i in res.data.value){
-                    this.resdata.push(res.data.value[i])
-                }
-                if(this.resdata.length==0){
-                    document.getElementById("main").classList.remove("ebox");
-                    this.echartIn(this.getIndexX(),this.resdata)  
-                    swal("没有数据")
-                }else{
-                    document.getElementById("main").classList.remove("ebox");
-                    document.getElementById("main").classList.add("ebox");
-                    this.resdata.splice(0,6)
-                    this.echartIn(this.getIndexX(),this.resdata)  
-                }
-                
+                this.resdata=res.data.value;
+                this.echartIn(this.resdata)
             }).catch(err=>{}).finally(()=>{});
+            dsmEnergyUseServ.getAllVol(this.startDate,this.endDate,this.selectLdId).then(res=>{
+                this.e2Data=[];
+                this.e2Data=res.data.value;
+                this.echartIn2(this.e2Data);
+            }).catch(err=>{}).finally(()=>{});
+            dsmEnergyUseServ.getAllVol(this.startDate,this.endDate,this.selectLdId).then(res=>{
+                this.tableData=[];
+                let c=res.data.value;
+                for(let i=0;i<c.length;i++){
+                    if(c[i].length>0){
+                        for(let t=0;t<c[i].length;t++){
+                            this.tableData.push(c[i][t])
+                        }
+                    }
+                }
+            }).catch(err=>{}).finally(()=>{});
+            
         },
         getDate(a){
-            this.selectDate=a;//获取日期
+            this.startDate=a[0];
+            this.endDate=a[1];//获取日期
         },
         getIndexX(){ // X轴坐标时间
             let x=[]
