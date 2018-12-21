@@ -44,7 +44,7 @@ i{
 }
 .ebox{
     width: 100%;
-    height: 350px;
+    height: 400px;
     min-width: 700px;
 }
 </style>

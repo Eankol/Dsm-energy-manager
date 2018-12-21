@@ -37,7 +37,7 @@
                         <template slot="title">
                             <span>{{menu.menuName}}</span>
                         </template>
-                        <MenuItem v-for="option in menu.nodes" :name="option.menuId" :key="option.menuId" :to="option.reference">
+                        <MenuItem v-for="option in menu.nodes" :name="option.reference" :key="option.menuId">
                             <span>{{option.menuName}}</span>
                         </MenuItem>
                     </Submenu>
@@ -58,11 +58,17 @@
             </Sider>
                 
                 <Content :style="{margin: '20px 20px 20px 20px',height:'100%','box-shadow':'1px 1px 5px #333333','border-radius':'20px 20px 0px 0px'}">
-                 <div style="overflow:hidden">   <Menu mode="horizontal" style="height:50px;padding:0px;margin:0px;" :active-name="activeBtn">
-        <MenuItem v-for="tmp in activeMenu" :name="tmp.menuId" :key="tmp.menuId" :to="tmp.reference" class="closeBtn" @on-select="onSelect">
-            {{tmp.menuName}} <Icon v-if="activeMenu.length>1" type="md-close-circle" @click="delActive(tmp.menuId)" />
-        </MenuItem>
-    </Menu></div>
+                 <div :style="{background:'#ffffff','border-bottom':'1px #eeeeef solid',padding:'10px 10px 0px 10px',height:'46px','text-align':activeMenu.length<6?'':'center'}">
+                  <span><Icon type="md-arrow-dropleft" class="tl" v-show="activeMenu.length<6?false:true"  @click="toLeft()"/></span>
+                    <span v-show="activeMenu.length<6?false:true" >···</span>
+                    <span class="titleBtn" v-for="m in sptActive()">
+                         <span :class="m.style" @click="onSelect(m.reference)">{{m.menuName}}</span>
+                         <Icon type="md-close" v-show="(activeMenu.length>1?true:false)" @click="delActive(m.reference)"/>
+                    </span>
+                    <span v-show="activeMenu.length<6?false:true" >···</span>
+                    <span><Icon type="md-arrow-dropright" class="tr" v-show="activeMenu.length<6?false:true" @click="toRight()"/></span>
+                 </div>
+                 <div style="clear:both;margin:0;padding:0"></div>
     <keep-alive>
     <router-view :style="{background: '#fff', minHeight: '100px',height:viewHeight,overflow:'auto'}"/>
     </keep-alive>
