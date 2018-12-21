@@ -72,7 +72,7 @@ export default {
             for(var i=0;i<this.activeMenu.length;i++){
                 if (this.activeMenu[i].menuId==data) {
                     this.activeMenu.splice(i,1);
-                    this.$router.go(-1);                     
+                    window.history.go(-1);                 
                 }
             }
         }
