@@ -1,10 +1,10 @@
 <template>
     <div>
        <Row style="height:100%">
-           <Col :span="5" :style="{height:'100%',overflow:'auto'}">
+           <div :span="5" :style="{height:'100%',float:'left',width:'20%'}">
            <Tree ref="tree" :data="devs" @on-select-change="selectDev"></Tree>
-           </Col>
-           <Col :span="19" :style="{height:'100%',overflow:'auto',background:'#fffeff'}">
+           </div>
+           <div :span="19" :style="{height:'100%',overflow:'auto',background:'#fffeff',width:'80%'}">
            <Layout>
                <Content class="content">
                    选择日期：
@@ -12,7 +12,7 @@
                    &emsp;
                    <Button type="primary" @click="toQuery()"><Icon type="ios-search"/>查询</Button>
                    </Select>&emsp;
-                   <Button type="success"><Icon type="ios-cloud-download-outline" />导出</Button>
+                   <Button type="success" @click="export2Excel()"><Icon type="ios-cloud-download-outline" />导出</Button>
                 </Content>
                 <Content class="content">
                     <div id="main" class="eboxHide ebox">
@@ -23,11 +23,13 @@
                     </div>
                 </Content>
                 <Content class="content">
-                    <Table :columns="columns1" :data="tableData"></Table>
+                    <Table :columns="columns1" :data="tableData" ref="table"></Table>
+                </Content>
+                <Content class="content">
+                    <Page :total="pageTotal" :current="a" :page-size="b" :page-size-opts="c" :placement="d" show-elevator show-sizer show-total placement="top" @on-change="handlePage" @on-page-size-change='handlePageSize'></Page>
                 </Content>
            </Layout>
-           </Col>
-           
+          </div>
        </Row>
     </div>
 </template>

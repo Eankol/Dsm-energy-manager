@@ -3,6 +3,12 @@ import dsmEnergyUseServ from "@/components/js/EnergyManager/dsmEnergyUse.Service
 export default{
     data(){
         return {
+        	a:1,
+        	b:10,
+        	c:[10,20,50,100],
+        	d:'bottom',
+        	e:[],
+        	pageTotal:0,
             devs:[],
             selectDate:'',
             selectType:'',
@@ -197,23 +203,25 @@ export default{
                 this.resdata=[];
                 this.resdata=res.data.value;
                 this.echartIn(this.resdata)
+                //alert(JSON.stringify(this.resdata));
             }).catch(err=>{}).finally(()=>{});
             dsmEnergyUseServ.getAllVol(this.startDate,this.endDate,this.selectLdId).then(res=>{
                 this.e2Data=[];
                 this.e2Data=res.data.value;
                 this.echartIn2(this.e2Data);
+                //alert(JSON.stringify(this.e2Data));
             }).catch(err=>{}).finally(()=>{});
-            dsmEnergyUseServ.getAllVol(this.startDate,this.endDate,this.selectLdId).then(res=>{
+            dsmEnergyUseServ.getAllVolTwo(this.startDate,this.endDate,this.selectLdId,this.a,this.b).then(res=>{
                 this.tableData=[];
                 let c=res.data.value;
+                let d=res.data.str;
                 for(let i=0;i<c.length;i++){
-                    if(c[i].length>0){
-                        a+=c[i].length;
-                        for(let t=0;t<c[i].length;t++){
-                            this.tableData.push(c[i][t])
-                        }
-                    }
+
+                	this.tableData.push(c[i])
+
                 }
+                this.pageTotal = d[0];
+               //alert(JSON.stringify(this.tableData));
             }).catch(err=>{}).finally(()=>{});
             
         },
@@ -229,6 +237,55 @@ export default{
                x.push((h<10?('0'+h):h)+':'+(m<10?('0'+m):m))
             }
             return x;
-        }
+        },
+        exportData () {
+            this.$refs.table.exportCsv({
+                filename: '耗电类比分析'
+            });
+        },
+        handlePage(value) {
+	      this.a = value;
+	      dsmEnergyUseServ.getAllVolTwo(this.startDate,this.endDate,this.selectLdId,this.a,this.b).then(res=>{
+                this.tableData=[];
+                let c=res.data.value;
+                for(let i=0;i<c.length;i++){
+                	this.tableData.push(c[i])
+                }
+               //alert(JSON.stringify(this.tableData));
+            }).catch(err=>{}).finally(()=>{});
+	    },
+	    handlePageSize(value) {
+	      this.b = value;
+	      dsmEnergyUseServ.getAllVolTwo(this.startDate,this.endDate,this.selectLdId,this.a,this.b).then(res=>{
+                this.tableData=[];
+                let c=res.data.value;
+                for(let i=0;i<c.length;i++){
+                	this.tableData.push(c[i])
+                }
+               //alert(JSON.stringify(this.tableData));
+            }).catch(err=>{}).finally(()=>{});
+	    },
+	    formatJson(filterVal, jsonData) {
+    　　　　return jsonData.map(v => filterVal.map(j => v[j]))
+	    　},
+	    export2Excel() {
+	    	 dsmEnergyUseServ.getAllVolTT(this.startDate,this.endDate,this.selectLdId).then(res=>{
+                this.e=[];
+                let c=res.data.value;
+                for(let i=0;i<c.length;i++){
+                	this.e.push(c[i])
+                }
+                
+                require.ensure([], () => {
+	    　　　　　　const { export_json_to_excel } = require('../../../vendor/Export2Excel');
+	    　　　　　　const tHeader = ['设备名称','设备编号','日期','电压',];
+	    　　　　　　const filterVal = ['dsmLdName', 'dsmLdId', 'date', 'maxVol',];
+	    　　　　　　const list = this.e;
+	    　　　　　　const data = this.formatJson(filterVal, list);
+	    　　　　　　export_json_to_excel(tHeader, data, '耗电类比分析');
+	    　　　　})
+               //alert(JSON.stringify(this.tableData));
+            }).catch(err=>{}).finally(()=>{});
+	    　 }
     }
 }
