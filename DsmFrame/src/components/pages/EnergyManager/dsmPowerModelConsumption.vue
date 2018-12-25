@@ -2,8 +2,11 @@
     <div>
        <Row style="height:100%">
            <div :span="5" :style="{height:'100%',float:'left',width:'20%'}">
-           <Tree ref="tree" :data="devs" @on-select-change="selectDev"></Tree>
+           	<Input v-model="selData" placeholder="搜索……" style="width:100%;margin-left:0px" @on-change="selectMenu()"/>
+         <div :style="{overflow:'auto',height:'93%'}">
+          <Tree ref="tree" :data="devs" @on-select-change="selectDev"></Tree>
            </div>
+     </div>
            <div :span="19" :style="{height:'100%',overflow:'auto',background:'#fffeff',width:'80%'}">
            <Layout>
                <Content class="content">
