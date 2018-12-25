@@ -3,6 +3,8 @@ export default {
     data () {
         return {
             isCollapsed: false,
+            selData:'',
+            openMenu:[],
             viewHeight:(window.innerHeight-150)+"px",
             menusData:{},
             activeMenu:[{
@@ -107,6 +109,27 @@ export default {
             }
             this.activeMenu.splice(0,1);
             this.activeMenu.splice(0,0,a);
+        },
+        selectMenu(){
+            //if(this.selData=="menu"){
+             //swal(JSON.stringify(this.menusData))   
+            //}
+            this.openMenu=[];
+            if(this.selData!=""){
+                for(let i=0;i<this.menusData.menus.length;i++){
+                    let tmp=this.menusData.menus[i];
+                    for(let j=0;j<tmp.nodes.length;j++){
+                        if (tmp.nodes[j].menuName.indexOf(this.selData)!=-1) {
+                            this.openMenu.push(this.menusData.menus[i].menuId)   
+                        }
+                    }                   
+                }
+            }
+            this.$nextTick(()=> {
+                this.$refs.side_menu.updateOpened();
+                this.$refs.side_menu.updateActiveName();
+            });
+            
         }
     }
 }

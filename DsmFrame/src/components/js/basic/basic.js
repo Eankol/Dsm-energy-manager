@@ -39,6 +39,9 @@ export default {
             this.edatas=[5, 20, 36, a, 10]
             this.echartIn(this.edatas);
             swal("查询成功！");
+        },
+        teseAlert(){
+            swal("test");
         }
     }
   }

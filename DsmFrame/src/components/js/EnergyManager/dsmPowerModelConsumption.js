@@ -208,6 +208,7 @@ export default{
                 let c=res.data.value;
                 for(let i=0;i<c.length;i++){
                     if(c[i].length>0){
+                        a+=c[i].length;
                         for(let t=0;t<c[i].length;t++){
                             this.tableData.push(c[i][t])
                         }

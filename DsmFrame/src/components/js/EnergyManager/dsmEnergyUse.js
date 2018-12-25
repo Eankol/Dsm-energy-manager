@@ -8,6 +8,7 @@ export default{
             selectType:'',
             resdata:[],
             selectLdId:'',
+            selData:'',
             id:'main',
             isRelative:false //是否为相对坐标，只有line需要引用
         }    
@@ -175,6 +176,17 @@ export default{
                x.push((h<10?('0'+h):h)+':'+(m<10?('0'+m):m))
             }
             return x;
+        },
+        selectMenu(){
+            swal(JSON.stringify(this.devs))
+        },
+        redoTree(tree){
+            for(let i=0;i<tree.length;i++){
+                tree[i].expand=false;
+                if(tree.title.indexOf(this.selData)!=-1){
+                    tree[i].expand=true;
+                }
+            }
         }
     }
 }

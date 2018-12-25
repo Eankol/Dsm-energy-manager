@@ -31,6 +31,11 @@ export default new Router({
       component: dsmPowerModelConsumption
     },
     {
+      path:"/kode/EnergyManager/EM_ca/energy.html",
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
       path: '/*',
       name: '404',
       component: errPage

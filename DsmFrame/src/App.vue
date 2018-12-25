@@ -28,9 +28,9 @@
             <Layout>
               <Sider ref="side1" hide-trigger collapsible :collapsed-width="1" v-model="isCollapsed" :style="{padding:'0px',margin:'0px',background:'#ffffff','box-shadow':'3px 3px 10px #333333',overflow:'visible'}">
                <div class="isHide"> <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0px'}" type="md-menu" size="20"></Icon></div>
-                <Menu active-name="1-2" width="auto" :class="menuitemClasses" @on-select="onSelect">
+                <Menu ref="side_menu" :active-name="activeBtn" width="auto" :open-names="openMenu" :class="menuitemClasses" @on-select="onSelect" accordion>
                    <div style="padding:0px 10px 20px 10px;width:200px;">
-                       <Input prefix="ios-search" placeholder="搜索……" style="width:100%;margin-left:0px" />
+                       <Input v-model="selData" prefix="ios-search" placeholder="搜索……" style="width:100%;margin-left:0px" @on-change="selectMenu()"/>
                     </div>
                     <div style="position:relative;height:100%;overflow:auto">
                     <Submenu v-for="menu in menusData.menus" :name="menu.menuId" :key="menu.menuId" >
@@ -42,18 +42,6 @@
                         </MenuItem>
                     </Submenu>
                     </div>
-                    <!--<MenuItem name="1-2">
-                        <Icon type="ios-navigate"></Icon>
-                        <span>电能分析</span>
-                    </MenuItem>
-                    <MenuItem name="1-3">
-                        <Icon type="ios-search"></Icon>
-                        <span>电能时比分析</span>
-                    </MenuItem>
-                    <MenuItem name="1-4">
-                        <Icon type="ios-settings"></Icon>
-                        <span>用电安全分析</span>
-                    </MenuItem>-->
                 </Menu>
             </Sider>
                 

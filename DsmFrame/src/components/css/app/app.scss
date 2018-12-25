@@ -169,7 +169,7 @@ to {transform: translateX(0%);color: #096792}
 }
 .tl{
     font-size: 30px;
-    display: inline-block;
+    display: block;
     transition: all 0.5s;
     padding-bottom: 10px;
     animation: moveBtn 0.8s infinite alternate;
@@ -180,7 +180,7 @@ to {transform: translateX(0%);color: #096792}
 .tr{
     transition: all 0.5s;
     font-size: 30px;
-    display: inline-block;
+    display: block;
     padding-bottom: 10px;
     animation: moveBtn1 0.8s infinite alternate;
     cursor: pointer;

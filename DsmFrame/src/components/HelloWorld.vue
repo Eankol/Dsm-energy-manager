@@ -41,6 +41,13 @@
               <li><textarea><Button type="success">成功</Button></textarea><Button type="success">成功</Button></li>
               <li><textarea><Button type="warning">警告</Button></textarea><Button type="warning">警告</Button></li>
               <li><textarea><Button type="error">错误</Button></textarea><Button type="error">错误</Button></li>
+              <li>点击方法：@click:<textarea><Button type="primary" @click="teseAlert()">普通</Button></textarea><Button type="primary" @click='teseAlert()'>普通</Button></li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              输入框:
+              <li></li>
             </ul>
           </li>
         </ol>

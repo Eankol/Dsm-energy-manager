@@ -1,10 +1,14 @@
 <template>
     <div>
        <Row style="height:100%">
-           <Col :span="5" :style="{height:'100%',overflow:'auto'}">
+           <div :span="5" :style="{height:'100%',float:'left',width:'20%'}">
+           
+            <Input v-model="selData" placeholder="搜索……" style="width:100%;margin-left:0px" @on-change="selectMenu()"/>
+         <div :style="{overflow:'auto',height:'93%'}">
            <Tree ref="tree" :data="devs" @on-select-change="selectDev" :multiple="true"></Tree>
-           </Col>
-           <Col :span="19" :style="{height:'100%',overflow:'auto',background:'#fffeff'}">
+           </div>
+           </div>
+           <div :span="19" :style="{height:'100%',overflow:'auto',background:'#fffeff',width:'80%'}">
            <Layout>
                <Content class="content">
                    选择日期：
@@ -23,7 +27,7 @@
                     </div>
                 </Content>
            </Layout>
-           </Col>
+           </div>
            
        </Row>
     </div>
@@ -35,6 +39,11 @@
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
+}
+.ivu-input-prefix{
+    i{
+        margin-left: -60px;
+    }
 }
 i{
     font-size:18px

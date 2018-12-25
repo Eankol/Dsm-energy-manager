@@ -46,6 +46,8 @@ public class mmxuVolcServ {
         devs=readDevs(devInfos,devs);
         devs.add(ldId);
         ArrayList<ArrayList> res=new ArrayList<>();
+        String allDevs=devs.toString();
+        System.out.println(allDevs);
         for (int i=0;i<devs.size();i++){
             res.add(mstaVoldDao.getMstaVol(startDate, endDate,devs.get(i)));
         }
