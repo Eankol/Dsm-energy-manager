@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import errPage from '@/components/pages/errPage'
 import index from '@/components/pages/index'
 import main from '@/components/main'
+import login from '@/components/pages/login'
 import dsmEnergyUse from '@/components/pages/EnergyManager/dsmEnergyUse'
 import dsmPowerModelConsumption from '@/components/pages/EnergyManager/dsmPowerModelConsumption'
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: 'index',
       component: index
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path: '/main',
