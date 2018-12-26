@@ -7,18 +7,7 @@ export default {
             openMenu:[],
             viewHeight:(window.innerHeight-150)+"px",
             menusData:{},
-            activeMenu:[{
-                menuId:"11",
-                parentMenuId:"1",
-                menuLevel:"1",
-                menuName:"用电概况",
-                orderNo:"1",
-                menuState:"1",
-                style:'btf',
-                menuAliasName:"用电概况",
-                reference:"/kode/basic/basic.html",
-                nodes:[]}
-            ],
+            activeMenu:[],
             activeBtn:'',
             lastActive:''
         }

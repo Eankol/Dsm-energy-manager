@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import errPage from '@/components/pages/errPage'
+import index from '@/components/pages/index'
+import main from '@/components/main'
 import dsmEnergyUse from '@/components/pages/EnergyManager/dsmEnergyUse'
 import dsmPowerModelConsumption from '@/components/pages/EnergyManager/dsmPowerModelConsumption'
 
@@ -12,33 +14,41 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'index',
+      component: index
     },
     {
-      path: '/kode/basic/basic.html',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/kode/EnergyManager/DSM_power_consumption/DSM_energy_use.html',
-      name: '用能数据',
-      component: dsmEnergyUse
-    },
-    {
-      path: '/kode/EnergyManager/DSM_power_consumption/DSM_power_model_consumption.html',
-      name: '耗电类比分析',
-      component: dsmPowerModelConsumption
-    },
-    {
-      path:"/kode/EnergyManager/EM_ca/energy.html",
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/*',
-      name: '404',
-      component: errPage
+      path: '/main',
+      name: 'mainBox',
+      component: main,
+      children:[
+        {
+          path: '/kode/basic/basic.html',
+          name: 'HelloWorld',
+          component: HelloWorld
+        },
+        {
+          path: '/kode/EnergyManager/DSM_power_consumption/DSM_energy_use.html',
+          name: '用能数据',
+          component: dsmEnergyUse
+        },
+        {
+          path: '/kode/EnergyManager/DSM_power_consumption/DSM_power_model_consumption.html',
+          name: '耗电类比分析',
+          component: dsmPowerModelConsumption
+        },
+        {
+          path:"/kode/EnergyManager/EM_ca/energy.html",
+          name: 'HelloWorld',
+          component: HelloWorld
+        },
+        {
+          path: '/*',
+          name: '404',
+          component: errPage
+        }
+      ]
     }
+    
   ]
 })
