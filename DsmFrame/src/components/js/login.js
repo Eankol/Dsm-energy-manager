@@ -1,3 +1,5 @@
+import api from 'axios';
+import constant from '@/config/urlConfig';
 export default {
     data(){
         return {
@@ -9,6 +11,15 @@ export default {
         }
     },
     mounted(){
+        for(let i=0;i<constant.baseURL.length;i++){
+            api.get(constant.baseURL[i]+"/test").then((res)=>{
+                if(res.status==200){
+                    this.$g.setBaseURL(constant.baseURL[i])
+                    return true;
+                }
+            }).catch((err)=>{})
+        }
+        
         this.getCan();
         this.maxwidth = this.$refs.dragDiv.clientWidth - this.$refs.moveDiv.clientWidth;
         document.getElementsByTagName('html')[0].addEventListener('mousemove',this.mouseMoveFn);
@@ -193,11 +204,6 @@ var Point = function () {
 
     return Point;
 }();
-
-//*??????????????????????????????/
-// Velocity
-//*?????????????????????????????*/
-
 var Velocity = function () {
     function Velocity(vx, vy) {
         _classCallCheck(this, Velocity);
@@ -297,10 +303,6 @@ var Bounds = function () {
     return Bounds;
 }();
 
-//*??????????????????????????????/
-// Background
-//*?????????????????????????????*/
-
 var Background = function (_Entity) {
     _inherits(Background, _Entity);
 
@@ -344,12 +346,6 @@ var Background = function (_Entity) {
             var ctx = _ref3.ctx,
                 canvas = _ref3.canvas,
                 bounds = _ref3.bounds;
-
-            // const gradient = ctx.createLinearGradient(...bounds.params);
-            // gradient.addColorStop(0, '#333');
-            // gradient.addColorStop(1, '#222');
-
-            // ctx.fillStyle = gradient;
             ctx.fillStyle = '#252f3d';
             // ctx.globalAlpha = 0.9;
             ctx.fillRect.apply(ctx, _toConsumableArray(bounds.params));
@@ -359,10 +355,6 @@ var Background = function (_Entity) {
 
     return Background;
 }(Entity);
-
-//*??????????????????????????????/
-// Canvas
-//*?????????????????????????????*/
 
 var Canvas = function () {
     function Canvas(_ref4) {

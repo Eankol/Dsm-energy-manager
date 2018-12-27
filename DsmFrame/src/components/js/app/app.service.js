@@ -1,12 +1,9 @@
 import api from 'axios';
-import constant from '@/config/urlConfig';
-const { baseURL } = constant;
+import g from './../../global';
 
 class appService{
-
     getMenus(){
-
-        return api.get(baseURL+'/getMenus?parentId=0');
+        return api.get(g.info.baseURL+'/getMenus?parentId=0');
     }
 }
 
