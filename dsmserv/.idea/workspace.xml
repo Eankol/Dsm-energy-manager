@@ -17,6 +17,7 @@
       <file leaf-file-name="ComDsmservApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/shxt/dsmserv/ComDsmservApplication.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="57">
               <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
 =======
@@ -72,6 +73,10 @@
             <state relative-caret-position="152">
               <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="26" />
               <folding />
+>>>>>>> Stashed changes
+=======
+            <state relative-caret-position="228">
+              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
 >>>>>>> Stashed changes
             </state>
           </provider>
@@ -162,8 +167,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< Updated upstream
       <pane id="PackagesPane" />
       <pane id="Scope" />
+=======
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+>>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -364,12 +374,14 @@
         </subPane>
       </pane>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <pane id="PackagesPane" />
 =======
       <pane id="Scratches" />
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
       <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -512,6 +524,7 @@
       <workItem from="1545699909162" duration="644000" />
       <workItem from="1545706723542" duration="2506000" />
       <workItem from="1545784384253" duration="911000" />
+<<<<<<< Updated upstream
 =======
       <workItem from="1545635059006" duration="20193000" />
       <workItem from="1545717925771" duration="3094000" />
@@ -519,23 +532,31 @@
       <workItem from="1545784455896" duration="623000" />
       <workItem from="1545796838009" duration="42000" />
 >>>>>>> Stashed changes
+=======
+      <workItem from="1545870810994" duration="403000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="44954000" />
 =======
     <option name="totallyTimeSpent" value="65426000" />
 >>>>>>> Stashed changes
+=======
+    <option name="totallyTimeSpent" value="45357000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
 <<<<<<< Updated upstream
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.030257186" />
+      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.024205748" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -545,16 +566,15 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.76960784" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.8022876" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6666667" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6666667" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2700454" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22239032" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="3" side_tool="true" />
       <window_info id="Learn" order="2" />
@@ -563,6 +583,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.8022876" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -910,6 +931,7 @@
 <<<<<<< Updated upstream
         <state relative-caret-position="171">
           <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+<<<<<<< Updated upstream
 =======
         <state relative-caret-position="304">
           <caret line="20" column="84" lean-forward="false" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
@@ -917,6 +939,8 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
@@ -945,6 +969,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/shxt/dsmserv/ComDsmservApplication.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <state relative-caret-position="57">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
 =======
@@ -953,6 +978,10 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+>>>>>>> Stashed changes
+=======
+        <state relative-caret-position="228">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
 >>>>>>> Stashed changes
         </state>
       </provider>
