@@ -1,12 +1,12 @@
 <template>
     <div>
        <Row style="height:100%">
-           <div :span="5" :style="{height:'100%',float:'left',width:'20%'}">
-           	<Input v-model="selData" placeholder="搜索……" style="width:100%;margin-left:0px" @on-change="selectMenu()"/>
-         <div :style="{overflow:'auto',height:'93%'}">
-          <Tree ref="tree" :data="devs" @on-select-change="selectDev"></Tree>
-           </div>
-     </div>
+            <div :span="5" :style="{height:'100%',float:'left',width:'20%'}">
+           		<Input v-model="selData" placeholder="搜索……" style="width:100%;margin-left:0px" @on-change="selectMenu()"/>
+	         	<div :style="{overflow:'auto',height:'93%'}">
+	          		<Tree ref="tree" :data="devs" @on-select-change="selectDev"></Tree>
+	            </div>
+     		</div>
            <div :span="19" :style="{height:'100%',overflow:'auto',background:'#fffeff',width:'80%'}">
            <Layout>
                <Content class="content">
@@ -26,10 +26,10 @@
                     </div>
                 </Content>
                 <Content class="content">
-                    <Table :columns="columns1" :data="tableData" ref="table"></Table>
+                    <Table :columns="columns1" :data="tableData" ref="table" :loading="loading" @on-select="onselect" @on-select-all="onselectall"></Table>
                 </Content>
                 <Content class="content">
-                    <Page :total="pageTotal" :current="a" :page-size="b" :page-size-opts="c" :placement="d" show-elevator show-sizer show-total placement="top" @on-change="handlePage" @on-page-size-change='handlePageSize'></Page>
+                    <Page :total="pageTotal" :current="a" :page-size="b" :page-size-opts="c" :placement="d" show-sizer show-total placement="top" @on-change="handlePage" @on-page-size-change='handlePageSize'></Page>
                 </Content>
            </Layout>
           </div>

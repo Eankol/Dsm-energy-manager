@@ -73,8 +73,8 @@ public class mmxuVolcServ {
         }
         System.out.println(devsID);
         ArrayList<mstaVoldInfo> res = (mstaVoldDao.getMstaVolTwo(startDate, endDate,devsID, a, b));
-        ArrayList<String> str = new ArrayList<String>();
-        str.add(""+mstaVoldDao.getMstaVolT(startDate, endDate,devsID));
+        ArrayList<Integer> str = new ArrayList<Integer>();
+        str.add(mstaVoldDao.getMstaVolT(startDate, endDate,devsID));
         map.put("value",res);
         map.put("str",str);
         return map;

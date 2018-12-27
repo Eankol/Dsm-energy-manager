@@ -7,6 +7,7 @@ import main from '@/components/main'
 import login from '@/components/pages/login'
 import dsmEnergyUse from '@/components/pages/EnergyManager/dsmEnergyUse'
 import dsmPowerModelConsumption from '@/components/pages/EnergyManager/dsmPowerModelConsumption'
+import dsmPowerModelConsumptionTwo from '@/components/pages/EnergyManager/dsmPowerModelConsumptionTwo'
 
 Vue.use(Router)
 
@@ -44,7 +45,12 @@ export default new Router({
           component: dsmPowerModelConsumption
         },
         {
-          path:"/kode/EnergyManager/EM_ca/energy.html",
+          path: '/kode/EnergyManager/DSM_power_consumption/DSM_power_time_consumption.html',
+          name: '耗电时比分析',
+          component: dsmPowerModelConsumptionTwo
+        },
+        {
+          path: "/kode/EnergyManager/EM_ca/energy.html",
           name: 'HelloWorld',
           component: HelloWorld
         },

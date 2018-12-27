@@ -9,6 +9,8 @@ export default{
         	d:'bottom',
         	e:[],
         	pageTotal:0,
+        	loading:false,
+        	selData:'',
             devs:[],
             selectDate:'',
             selectType:'',
@@ -21,17 +23,62 @@ export default{
             tableData:[],
             isRelative:false, //是否为相对坐标，只有line需要引用
             columns1: [{
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+            },
+            	{
                     title: '设备名称',
-                    key: 'dsmLdName'
+                    key: 'dsmLdName',
+                    render: (h, params) => {
+                        return h('span', {
+                            on: {
+                                click: () => {
+                                    this.alertTest(params.row.dsmLdName)
+                                }
+                            }
+            
+                        },params.row.dsmLdName);
+                    }
                 },{
                     title: '设备编号',
-                    key: 'dsmLdId'
+                    key: 'dsmLdId',
+                    render: (h, params) => {
+                        return h('span', {
+                            on: {
+                                click: () => {
+                                    this.alertTest(params.row.dsmLdId)
+                                }
+                            }
+            
+                        },params.row.dsmLdId);
+                    }
                 },{
                     title: '日期',
-                    key: 'date'
+                    key: 'date',
+                    render: (h, params) => {
+                        return h('span', {
+                            on: {
+                                click: () => {
+                                    this.alertTest(params.row.date)
+                                }
+                            }
+            
+                        },params.row.date);
+                    }
                 },{
                     title:'电压',
                     key:'maxVol',
+                    render: (h, params) => {
+                        return h('span', {
+                            on: {
+                                click: () => {
+                                    this.alertTest(params.row.maxVol)
+                                }
+                            }
+            
+                        },params.row.maxVol);
+                    }
                 }]
         }    
     },
@@ -212,6 +259,7 @@ export default{
                 //alert(JSON.stringify(this.e2Data));
             }).catch(err=>{}).finally(()=>{});
             dsmEnergyUseServ.getAllVolTwo(this.startDate,this.endDate,this.selectLdId,this.a,this.b).then(res=>{
+                this.loading = true;
                 this.tableData=[];
                 let c=res.data.value;
                 let d=res.data.str;
@@ -221,6 +269,7 @@ export default{
 
                 }
                 this.pageTotal = d[0];
+                this.loading = false;
                //alert(JSON.stringify(this.tableData));
             }).catch(err=>{}).finally(()=>{});
             
@@ -244,17 +293,21 @@ export default{
             });
         },
         handlePage(value) {
+          this.loading = true;
 	      this.a = value;
+	      console.log(this.a);
 	      dsmEnergyUseServ.getAllVolTwo(this.startDate,this.endDate,this.selectLdId,this.a,this.b).then(res=>{
                 this.tableData=[];
                 let c=res.data.value;
                 for(let i=0;i<c.length;i++){
                 	this.tableData.push(c[i])
                 }
+                this.loading = false;
                //alert(JSON.stringify(this.tableData));
             }).catch(err=>{}).finally(()=>{});
 	    },
 	    handlePageSize(value) {
+	    	this.loading = true;
 	      this.b = value;
 	      dsmEnergyUseServ.getAllVolTwo(this.startDate,this.endDate,this.selectLdId,this.a,this.b).then(res=>{
                 this.tableData=[];
@@ -262,6 +315,7 @@ export default{
                 for(let i=0;i<c.length;i++){
                 	this.tableData.push(c[i])
                 }
+                this.loading = false;
                //alert(JSON.stringify(this.tableData));
             }).catch(err=>{}).finally(()=>{});
 	    },
@@ -286,6 +340,18 @@ export default{
 	    　　　　})
                //alert(JSON.stringify(this.tableData));
             }).catch(err=>{}).finally(()=>{});
-	    　 }
+	    　 },
+	    selectMenu(){
+            swal(JSON.stringify(this.devs))
+       },
+       alertTest(value) {
+         alert(value);
+       },
+       onselect(selection,row) {
+       		alert(JSON.stringify(selection));
+       },
+       onselectall(selection) {
+       		alert(JSON.stringify(selection));
+       }
     }
 }

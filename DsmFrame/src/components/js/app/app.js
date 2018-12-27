@@ -64,6 +64,7 @@ export default {
                 }
             }
             this.activeBtn=data;
+            //alert(data)
             this.$router.push({path:data})
         },
         delActive(data){
