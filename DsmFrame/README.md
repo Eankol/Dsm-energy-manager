@@ -26,6 +26,8 @@
 #### v5.0.1
 1. 增加全局变量模块，并注入vue，现在可在任意位置使用 this.$g 来使用。在任意工具类，如 service.js ,可 import 全局模块 global.vue 并使用；
 2. 在登陆页，使用 asiox 先行判断服务器地址，使内外网均可访问。地址配置扫描文件为 config - urlConfig.js ,讲服务器地址配置在 baseURL 数组中即可；
+#### v5.1.1
+1. 表格展开，分页优化，单元格点击
 
 
 ### attention
