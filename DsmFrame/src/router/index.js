@@ -12,7 +12,7 @@ import dsmPowerModelConsumptionTwo from '@/components/pages/EnergyManager/dsmPow
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
+  mode:'hash',
   routes: [
     {
       path: '/',

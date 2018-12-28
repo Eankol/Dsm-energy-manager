@@ -4,6 +4,7 @@ export default {
     },
     methods:{
         goRouter(a){
+            a=(a=='1'?(window.location.href+"login"):a)
             window.open(a,'target')
         },
         getCan(){

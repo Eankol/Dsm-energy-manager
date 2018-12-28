@@ -2,7 +2,7 @@
    <div class="in">
        <div class="mainBor" align='center'>
            <h2>功能选择</h2>
-           <div @click="goRouter('http://127.0.0.1:8087/login')">
+           <div @click="goRouter('1')">
                <Icon type="md-pulse" />
                能管系统
             </div>

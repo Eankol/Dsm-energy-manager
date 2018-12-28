@@ -16,9 +16,11 @@ export default {
      appService.getMenus().then(res=>{
          console.log(res);
          this.menusData=res.data;
+         this.onSelect('/kode/basic/basic.html');
      }).catch(error=>{
          console.log(error)
      }).finally(()=>{});
+     
     },
     computed: {
         rotateIcon () {
