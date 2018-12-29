@@ -79,11 +79,11 @@ export default {
         },
         sptActive(){
             let i=this.activeMenu.length
-            if(i<6){
+            if(i<7){
                 return this.activeMenu
             }
             
-            return [this.activeMenu[i-5],this.activeMenu[i-4],
+            return [this.activeMenu[i-6],this.activeMenu[i-5],this.activeMenu[i-4],
             this.activeMenu[i-3],this.activeMenu[i-2],this.activeMenu[i-1]];
         },
         toLeft(){

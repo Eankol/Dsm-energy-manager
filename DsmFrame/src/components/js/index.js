@@ -5,7 +5,7 @@ export default {
     methods:{
         goRouter(a){
             a=(a=='1'?(window.location.href+"login"):a)
-            window.open(a,'target')
+            window.open(a,'_blank')
         },
         getCan(){
             var _class7, _temp2, _initialiseProps;
