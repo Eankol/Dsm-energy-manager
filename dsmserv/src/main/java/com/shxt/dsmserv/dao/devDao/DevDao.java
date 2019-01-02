@@ -15,6 +15,7 @@ public interface DevDao {
             @Result(column = "DSM_SYS_ID",property="dsmSysId"),
             @Result(column = "DSM_LD_ID",property="dsmLdId"),
             @Result(column = "DSM_LD_NAME",property="title"),
+            @Result(column = "DSM_LD_NAME",property="label"),
             @Result(column = "DSM_OBJTYPE_CODE",property="dsmObjtypeCode"),
             @Result(column = "DSM_ENERGYTYPE_TYPE",property="dsmEnergytypeType"),
             @Result(column = "CPY_CAP_NUM",property="cpyCapNum"),

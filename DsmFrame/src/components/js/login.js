@@ -27,10 +27,10 @@ export default {
     },
     methods:{
         onLogin(){
-            if(!this.confirmSuccess){
-                swal("请验证登陆")
-                return false;
-            }
+            //if(!this.confirmSuccess){
+               // swal("请验证登陆")
+               // return false;
+           // }
             this.$router.push({path:'/main'});
         },
         mousedownFn:function (e) {

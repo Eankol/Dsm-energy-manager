@@ -11,6 +11,7 @@ public class DevInfo {
     private String dsmSysId;
     private String dsmLdId;
     private String title;
+    private String label;
     private String dsmObjtypeCode;
     private String dsmEnergytypeType;
     private String cpyCapNum;

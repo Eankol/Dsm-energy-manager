@@ -29,7 +29,7 @@
                     <Table :columns="columns1" :data="tableData" ref="table" :loading="loading"></Table>
                 </Content>
                 <Content class="content">
-                    <Page :total="pageTotal" :current="a" :page-size="b" :page-size-opts="c" :placement="d" show-sizer show-total placement="top" @on-change="handlePage" @on-page-size-change='handlePageSize'></Page>
+                    <Page :total="pageTotal" :current="a" :page-size="b" :page-size-opts="c" :placement="d" show-sizer show-total @on-change="handlePage" @on-page-size-change='handlePageSize'></Page>
                 </Content>
            </Layout>
           </div>

@@ -8,6 +8,7 @@ import login from '@/components/pages/login'
 import dsmEnergyUse from '@/components/pages/EnergyManager/dsmEnergyUse'
 import dsmPowerModelConsumption from '@/components/pages/EnergyManager/dsmPowerModelConsumption'
 import dsmPowerModelConsumptionTwo from '@/components/pages/EnergyManager/dsmPowerModelConsumptionTwo'
+import energy from '@/components/pages/EnergyManager/energy'
 
 Vue.use(Router)
 
@@ -51,8 +52,8 @@ export default new Router({
         },
         {
           path: "/kode/EnergyManager/EM_ca/energy.html",
-          name: 'HelloWorld',
-          component: HelloWorld
+          name: 'energy',
+          component: energy
         },
         {
           path: '/*',

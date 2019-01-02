@@ -8,6 +8,8 @@ import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import swal from 'sweetalert';
 import SIdentify from './components/pages/identify'
+import elementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 
 import echarts from 'echarts'
@@ -18,6 +20,7 @@ Vue.prototype.$g = g
 Vue.config.productionTip = false
 Vue.use(iView)
 Vue.use(SIdentify)
+Vue.use(elementUI)
 Vue.swal = swal
 Vue.prototype.$swal = swal
 
