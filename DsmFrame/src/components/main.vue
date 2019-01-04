@@ -45,7 +45,7 @@
                 </Menu>
             </Sider>
                 
-                <Content :style="{margin: '20px 20px 20px 20px',height:'100%','box-shadow':'1px 1px 5px #333333','border-radius':'20px 20px 0px 0px'}">
+                <Content class="conts">
                  <div :style="{background:'#ffffff','border-bottom':'1px #eeeeef solid',padding:'10px 10px 0px 10px',height:'46px','text-align':activeMenu.length<6?'':'center'}">
                   <span><Icon type="md-arrow-dropleft" class="tl" v-show="activeMenu.length<6?false:true"  @click="toLeft()"/></span>
                     <span v-show="activeMenu.length<6?false:true" >···</span>

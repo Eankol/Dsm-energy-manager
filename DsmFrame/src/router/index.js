@@ -9,6 +9,8 @@ import dsmEnergyUse from '@/components/pages/EnergyManager/dsmEnergyUse'
 import dsmPowerModelConsumption from '@/components/pages/EnergyManager/dsmPowerModelConsumption'
 import dsmPowerModelConsumptionTwo from '@/components/pages/EnergyManager/dsmPowerModelConsumptionTwo'
 import energy from '@/components/pages/EnergyManager/energy'
+import energy2 from '@/components/pages/EnergyManager/energy2'
+import demand from '@/components/pages/EnergyManager/demand'
 
 Vue.use(Router)
 
@@ -54,6 +56,16 @@ export default new Router({
           path: "/kode/EnergyManager/EM_ca/energy.html",
           name: 'energy',
           component: energy
+        },
+        {
+          path: "/kode/EnergyManager/EM_ca/energy2.html",
+          name: 'energy2',
+          component: energy2
+        },
+        {
+          path:'/kode/demand/demand.html',
+          name:'demand',
+          component: demand
         },
         {
           path: '/*',

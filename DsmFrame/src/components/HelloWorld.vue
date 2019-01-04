@@ -89,7 +89,9 @@
           <li>使用sass来定义样式，写法可以同css,文件后缀为.scss</li>
           <li>组件：iview , echartst , axios , sweetAlert</li>
           <li>sweetAlert已在全局注册，需要使用alert()的地方，都可以换成swal()</li>
-          <li>部分引入echarts</li>
+          <li>兼容IE版本10+</li>
+          <li>使用全局变量储存会话信息，而非localstrange,在老版本浏览器中有更好的体验，兼容性更强。</li>
+          <li>使用babel-polyfile,使老版本浏览器可以使用ES6的新特性</li>
         </ol>
       </p>
       <h3>
