@@ -1,4 +1,8 @@
-
+// 写在前面：原始数据不要包含数组，否则你还需要重写比较json的方法，
+// 你也可以尝试，使用ES6的findIndex来重写整个方法，这取决于你的数据，
+// 如果数据量过多，可以试着去重新格式化数据内容，否则图可能不会正确显示，
+// 在option中去配置tooltip鼠标悬停提示信息，合理使用formatter，
+// 尽量在函数中使用箭头函数，这样你才可以合理的使用vue的this关键字，因为vue在滥用this；
 export default{
     data(){
         return {
@@ -9,8 +13,9 @@ export default{
                 {
                     name:'采集点1',
                     id:'12',
-                    value:'??',
-                    symbol:'pin'
+                    itemStyle:{
+                        color:'#dd9900'
+                    }
                 },{
                     name:'采集点2',
                     id:'21'
@@ -19,10 +24,10 @@ export default{
                     id:'32'
                 },{
                     name:'采集点4',
-                    id:'41'
+                    id:'9'
                 },{
                     name:'采集点5',
-                    id:'52'
+                    id:'0'
                 }
             ],
             data2:[
@@ -51,20 +56,11 @@ export default{
         this.thisData=this.reData(this.data1,this.data2)//梳理数据，添加初始化坐标
         this.echartIn(this.relation,this.thisData)
         this.myChart.on('click',(value)=>{
-                
-            /*if(value.dataType=='node'){
-                let a={aa:'1',bb:'2'}
-                let ba={bb:'2',aa:'1'}
-                let c = this.compareJson(a,ba)
-                 console.log(c)
-            }*/
             if(value.dataType=='node'){
                 if(value.data.p==1){
-                     //console.log(this.fdex(value.data,this.thisData))
                      this.isR.source=this.fdex(value.data,this.thisData);
                  }
                  if(value.data.p==2){
-                     //console.log(this.fdex(value.data,this.thisData))
                      if(this.isR.source==null){
                      }else{
                          this.isR.target=this.fdex(value.data,this.thisData);
@@ -87,7 +83,7 @@ export default{
                 this.relation=tmp
                 this.echartIn(this.relation,this.thisData)
             }
-         })
+         });
     },
 
     methods: {
@@ -116,11 +112,22 @@ export default{
                     text: '映射关系图'
                 },
                 tooltip: {
-                    data:this.thisData
+                   formatter:(parmas)=>{ //格式化鼠标提示信息
+                    let res='';
+                    if(parmas.dataType=='node'){
+                        res=parmas.data.name+":<br/>已匹配设备:"+parmas.data.id;
+                    }
+                    if(parmas.dataType=='edge'){
+                        let t = parmas.name.split('>');
+                        res=this.thisData[parseInt(t[0])].name+">"+this.thisData[parseInt(t[1])].name;
+                    }
+                    return res;
+                   }
+                   
                 },
                 animationDurationUpdate: 1500,
                 animationEasingUpdate: 'quinticInOut',
-                series : [
+                series :[
                     {
                         type: 'graph',
                         layout: 'none',
@@ -167,13 +174,22 @@ export default{
         },
         compareJson(j1,j2){//比较两个json
             for(let key in j1){
-                if(j1[key]!=j2[key]){
-                    return false
+                if(typeof(j1[key])=='object'){
+                    this.compareJson(j1[key],j2[key])
+                }else{
+                    if(j1[key]!=j2[key]){
+                        return false
+                    }
                 }
+                
             }
             for(let key in j2){
-                if(j1[key]!=j2[key]){
-                    return false
+                if(typeof(j2[key])=='object'){
+                    this.compareJson(j1[key],j2[key])
+                }else{
+                    if(j2[key]!=j1[key]){
+                        return false
+                    }
                 }
             }
             return true;
